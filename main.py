@@ -19,8 +19,4 @@ def parse_argument():
     return None
 
 
-if __name__ == '__main__':
-    # 得到shell命令中的参数
-    argus = parse_argument()
-    print(argus)
-
+parse_argument()
