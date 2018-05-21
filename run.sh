@@ -1,3 +1,5 @@
 #!/bin/bash
-
-python main.py $inputfile $outputfile
+for i in "$*"; do
+    echo $i
+done
+python main.py $0 $1
