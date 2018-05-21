@@ -11,7 +11,7 @@ def parse_argument():
     if len(sys.argv) < 2:
         print(u"arguments needed")
     try:
-        args = {'inputfile': sys.argv[2], 'outputfile': sys.argv[3]}
+        args = {'inputfile': sys.argv[0], 'outputfile': sys.argv[1]}
         return args
     except IndexError as e:
         print(e)
