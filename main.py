@@ -9,7 +9,7 @@ import sys
 
 def parse_argument():
     if len(sys.argv) < 2:
-        raise(Exception, u"arguments needed")
+        print(u"arguments needed")
     try:
         args = {'inputfile': sys.argv[2], 'outputfile': sys.argv[3]}
         return args
