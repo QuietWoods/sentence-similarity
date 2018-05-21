@@ -1,5 +1,4 @@
 #!/bin/bash
-for i in "$*"; do
-    echo $i
-done
+
+echo "The number of parameters is: $#";
 python main.py $0 $1

@@ -8,10 +8,10 @@ import sys
 
 
 def parse_argument():
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 1:
         print(u"arguments needed")
     try:
-        args = {'inputfile': sys.argv[2], 'outputfile': sys.argv[3]}
+        args = {'inputfile': sys.argv[0], 'outputfile': sys.argv[1]}
         return args
     except IndexError as e:
         print(e)
@@ -21,5 +21,5 @@ def parse_argument():
 if __name__ == '__main__':
     # 得到shell命令中的参数
     argus = parse_argument()
-    print('inputfile: %s, outputfile: %s', argus.values())
+    print(argus)
 
