@@ -8,7 +8,6 @@ import sys
 
 
 def parse_argument():
-    print(sys.argv[:])
     if len(sys.argv) < 1:
         print(u"arguments needed")
     try:
@@ -19,4 +18,6 @@ def parse_argument():
     return None
 
 
-parse_argument()
+if __name__ == '__main__':
+    argus = parse_argument()
+    print(argus)
