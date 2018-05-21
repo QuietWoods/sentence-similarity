@@ -21,8 +21,8 @@ def parse_argument():
 
 
 if __name__ == '__main__':
-    # argus = parse_argument()
-    argus = {'inputfile': 'data/test.csv', 'outputfile': 'output.csv'}
+    argus = parse_argument()
+    # argus = {'inputfile': 'data/test.csv', 'outputfile': 'output.csv'}
     input_file = argus['inputfile']
     output_file = argus['outputfile']
     samples = Sentence(input_file, output_file)
