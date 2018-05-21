@@ -8,9 +8,8 @@ import numpy as np
 
 
 class SentenceSimilarity:
-    def __init__(self, sent1, sent2):
-        self.sent1 = sent1
-        self.sent2 = sent2
+    def __init__(self):
+        pass
 
     def result(self):
         result = np.random.randint(0, 2, 1)

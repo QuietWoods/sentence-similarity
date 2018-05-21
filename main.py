@@ -1,39 +1,28 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2018/5/21 14:38
-# @Author  : QuietWoods
-# @FileName: main.py
-# @Software: PyCharm
-# @Email    ：1258481281@qq.com
+#/usr/bin/env python
+#coding=utf-8
+import jieba
 import sys
-import model as sentsim
-from csv_helper import Sentence
+from model import SentenceSimilarity
 
 
-def parse_argument():
-    if len(sys.argv) < 1:
-        print(u"arguments needed")
-    try:
-        args = {'inputfile': sys.argv[1], 'outputfile': sys.argv[2]}
-        return args
-    except IndexError as e:
-        print(e)
-    return None
+def process(inpath, outpath):
+    with open(inpath, 'r') as fin, open(outpath, 'w') as fout:
+        similar = SentenceSimilarity()
+        for line in fin:
+            lineno, sen1, sen2 = line.strip().split('\t')
+            words1= [ w for w in jieba.cut(sen1) if w.strip() ]
+            words2= [ w for w in jieba.cut(sen2) if w.strip() ]
+            union = words1 + words2
+            same_num = 0
+            for w in union:
+                if w in words1 and w in words2:
+                    same_num += 1
+            tt = similar.result()
+            if tt:
+                fout.write(lineno + '\t1\n')
+            else:
+                fout.write(lineno + '\t0\n')
 
 
 if __name__ == '__main__':
-    argus = parse_argument()
-    # argus = {'inputfile': 'data/test.csv', 'outputfile': 'output.csv'}
-    input_file = argus['inputfile']
-    output_file = argus['outputfile']
-    samples = Sentence(input_file, output_file)
-    predicts = []
-    for sample in samples:
-        sample = sample.split('\t')[:3]
-        test = sentsim.SentenceSimilarity(sample[1], sample[2])
-        result = test.result()
-        sample.append(str(result[0]))
-        predicts.append(sample)
-
-    samples.list2csv(result=predicts)
-    print('*******************end*******************')
-
+    process(sys.argv[1], sys.argv[2])
