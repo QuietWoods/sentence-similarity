@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "The number of parameters is: $#"
-for i in "$*"; do
-    echo $i
-done
-echo "The input file is: $0"
-echo "The output file is: $1"
-python main.py $0 $1
+echo "The input file is: $1"
+echo "The output file is: $2"
+python main.py $1 $2
