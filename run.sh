@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python main.py $0 $1
+python main.py $inputfile $outputfile
